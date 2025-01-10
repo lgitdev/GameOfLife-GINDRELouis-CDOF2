@@ -1,27 +1,37 @@
-# Template in pygame documentation to initialize the game
 import pygame
 
-# pygame setup
-pygame.init()
-screen = pygame.display.set_mode((1280, 720))
-clock = pygame.time.Clock()
-running = True
+# color constants
+BLACK = (0, 0, 0)
+WHITE = (200, 200, 200)
 
-while running:
-    # poll for events
-    # pygame.QUIT event means the user clicked X to close your window
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
+def main():
+    global screen, clock # let these parameters accessible everywhere so we can access these variables in every method
+    # initialisation of py game 
+    pygame.init()
+    screen = pygame.display.set_mode((1280, 720))
+    clock = pygame.time.Clock()
+    screen.fill(BLACK)
+    running = True
 
-    # fill the screen with a color to wipe away anything from last frame
-    screen.fill("purple")
+    while running:
+        drawGrid() # create a grid for the game
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
 
-    # RENDER YOUR GAME HERE
+        pygame.display.update()
+    
+    pygame.quit()
 
-    # flip() the display to put your work on screen
-    pygame.display.flip()
 
-    clock.tick(60)  # limits FPS to 60
 
-pygame.quit()
+def drawGrid():
+    cellSize = 20 # size of a cell
+    for x in range(0, 1280, cellSize): # create the grid
+        for y in range(0, 780, cellSize):
+            rect = pygame.Rect(x, y, cellSize, cellSize)
+            pygame.draw.rect(screen, WHITE, rect, 1)
+
+
+
+main()
