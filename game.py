@@ -1,54 +1,17 @@
 import pygame
 from pygame.locals import *
+from init import *
+from welcomePage import *
+from constants import *
+from selectShapes import *
 
-# color constants
-BLACK = (0, 0, 0)
-WHITE = (200, 200, 200)
-
-# values of the cells
-cells = [[0] * 60 for i in range(35)]
-cellSize = 20 
-
-def main():
-    global screen, clock # let these parameters accessible everywhere so we can access these variables in every method
-    # initialisation of py game 
-    pygame.init()
-    screen = pygame.display.set_mode((1280, 720))
-    clock = pygame.time.Clock()
+choice = welcoming()
+if choice != "" :
     screen.fill(WHITE)
-    running = True
-
-    while running:
-        drawGrid() # create a grid for the game
-        
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-            if event.type == MOUSEBUTTONDOWN:
-                updateGrid(event)
-
-        pygame.display.update()
-    
-    pygame.quit()
-
-
-
-def drawGrid():
-    for x in range(40, 1240, cellSize): # create the grid
-        for y in range(40, 680, cellSize):
-            rect = pygame.Rect(x, y, cellSize, cellSize)
-            if cells[(y-40)//20][(x-40)//20] == 0: # cell dead
-                pygame.draw.rect(screen, BLACK, rect, 10)
-            else: # cell alive
-                pygame.draw.rect(screen, WHITE, rect, 10)
-
-def updateGrid(event):
-    x, y = event.pos # from the mouse click, change if a cell is alive or not
-    x -= 40
-    y -= 40
-    x //= 20
-    y //= 20
-    cells[y][x] = 1 - cells[y][x]
-
-
-main()
+    if choice == "Manually":
+        createGridWithMouseInit()
+    elif choice == "Random":
+        createGridRandom()
+    else: # shapes
+        selectShape()
+# begin 

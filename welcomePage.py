@@ -15,7 +15,6 @@ def welcoming():
                 return ""
             if event.type == MOUSEBUTTONDOWN:
                 x, y = event.pos
-                print(x,y)
                 if 300 <= y <= 320:
                     if 260 <= x <= 380:
                         s = "Manually"

@@ -1,15 +1,16 @@
 import pygame
 from pygame.locals import *
 from constants import *
+import random
 
 """
 This function is used if the user wants to create the initialization manually, using the mouse to select the living cells
 """
-def createGridWithMouseInit():
+def createGridWithMouseInit(cell=cells):
     running = True
 
     while running:
-        drawGrid() # create a grid for the game
+        drawGrid(cell) # create a grid for the game
         
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -25,9 +26,13 @@ def createGridWithMouseInit():
     
     pygame.quit()
 
+def createGridRandom():
+    global cells
+    cells = [[1 if random.random() < 0.2 else 0 for _ in range(60)] for _ in range(35)] # random initialization
+    createGridWithMouseInit()
 
 
-def drawGrid():
+def drawGrid(cell):
     font = pygame.font.SysFont(None, WIDTH//22)
     img = font.render('Game Of Life', True, BLACK)
     screen.blit(img, (WIDTH // 2 - img.get_width() // 2, 5))
@@ -36,9 +41,12 @@ def drawGrid():
     for x in range(40, WIDTH-40, cellSize): # create the grid
         for y in range(40, HEIGHT-40, cellSize):
             rect = pygame.Rect(x, y, cellSize, cellSize)
-            if cells[(y-40)//20][(x-40)//20] == 0: # cell dead
+            if cell[(y-40)//20][(x-40)//20] == 0: # cell dead
+                if (y-40)//20 == 17 and (x-40)//20 == 30:
+                    print("ici2")
                 pygame.draw.rect(screen, BLACK, rect, 10)
             else: # cell alive
+                print("ici")
                 pygame.draw.rect(screen, WHITE, rect, 10)
 
     font = pygame.font.SysFont(None, WIDTH//44)
