@@ -39,9 +39,8 @@ def createGridWithMouseInit(cell=cells):
     pygame.quit()
 
 def createGridRandom():
-    global cells
     cells = [[1 if random.random() < 0.2 else 0 for _ in range(60)] for _ in range(35)] # random initialization
-    createGridWithMouseInit()
+    createGridWithMouseInit(cells)
 
 
 def drawGrid(cell):
