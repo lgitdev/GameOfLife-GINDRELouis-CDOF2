@@ -140,11 +140,11 @@ def initShape(shape):
             cells[20][20] = 1
         case "Glider":
             cells = [[0] * 60 for i in range(35)]
-            cells[17][2] = 1
-            cells[17][4] = 1
-            cells[18][3] = 1
-            cells[18][4] = 1
-            cells[19][3] = 1
+            cells[2][2] = 1
+            cells[2][4] = 1
+            cells[3][3] = 1
+            cells[3][4] = 1
+            cells[4][3] = 1
         case "Light":
             cells = [[0] * 60 for i in range(35)]
             cells[17][2] = 1

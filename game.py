@@ -14,4 +14,5 @@ if choice != "" :
         createGridRandom()
     else: # shapes
         selectShape()
+    
 # begin 
