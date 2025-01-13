@@ -49,14 +49,17 @@ def welcoming():
 def draw():
     screen.fill((220, 220, 220))
 
+    # Titre principal
     font_title = pygame.font.SysFont('Arial', WIDTH // 15)
     title_img = font_title.render('Game Of Life', True, (0, 128, 255))
     screen.blit(title_img, (WIDTH // 2 - title_img.get_width() // 2, 20))
 
+    # Sous-titre
     font_subtitle = pygame.font.SysFont('Arial', WIDTH // 22)
     subtitle_img = font_subtitle.render('How do you want to initialize the cells?', True, (50, 50, 50))
     screen.blit(subtitle_img, (WIDTH // 2 - subtitle_img.get_width() // 2, 180))
 
+    # Options de boutons
     font_options = pygame.font.SysFont('Arial', WIDTH // 35)
     options = ["Manually", "Randomly", "Using specific forms"]
     column_width = WIDTH // 4
@@ -70,19 +73,25 @@ def draw():
         option_img = font_options.render(option, True, (255, 255, 255))
         column_x = column_x_start + i * column_width
         button_rect = pygame.Rect(column_x - button_width // 2, button_y, button_width, button_height)
-        pygame.draw.rect(screen, (0, 128, 255), button_rect)
-        screen.blit(option_img, (column_x - option_img.get_width() // 2, button_y + button_height // 4))
 
         if button_rect.collidepoint(pygame.mouse.get_pos()):
-            pygame.draw.rect(screen, (0, 100, 255), button_rect)
+            pygame.draw.rect(screen, (200, 0, 0), button_rect)  
+        else:
+            pygame.draw.rect(screen, (240, 0, 0), button_rect)  
 
+        screen.blit(option_img, (column_x - option_img.get_width() // 2, button_y + button_height // 4))
+
+   
     font_subtitle = pygame.font.SysFont('Arial', WIDTH // 22)
     begin_button_img = font_subtitle.render('Begin the game', True, (255, 255, 255))
-    begin_button_width = 320  # Largeur du bouton "Begin the game"
-    begin_button_height = 100  # Hauteur du bouton "Begin the game"
+    begin_button_width = 320 
+    begin_button_height = 100  
     begin_button_rect = pygame.Rect(WIDTH // 2 - begin_button_width // 2, 380, begin_button_width, begin_button_height)
-    pygame.draw.rect(screen, (0, 128, 255), begin_button_rect)
-    screen.blit(begin_button_img, (WIDTH // 2 - begin_button_img.get_width() // 2, 380 + begin_button_height // 4))
 
+   
     if begin_button_rect.collidepoint(pygame.mouse.get_pos()):
-        pygame.draw.rect(screen, (0, 100, 255), begin_button_rect)
+        pygame.draw.rect(screen, (200, 0, 0), begin_button_rect) 
+    else:
+        pygame.draw.rect(screen, (240, 0, 0), begin_button_rect) 
+
+    screen.blit(begin_button_img, (WIDTH // 2 - begin_button_img.get_width() // 2, 380 + begin_button_height // 4))
