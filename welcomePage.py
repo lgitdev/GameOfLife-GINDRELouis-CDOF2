@@ -44,7 +44,7 @@ def draw():
     intro_img = font_intro.render('Welcome to the Game of Life, a cellular automaton simulation!', True, BLACK)
     screen.blit(intro_img, (WIDTH // 2 - intro_img.get_width() // 2, 100))
 
-    # Additional introductory text
+    # Introductory text
     intro_text = [
         "In this simulation, cells live, die, or thrive based on simple rules.",
         "Your task is to initialize the grid and watch how patterns evolve over time.",
