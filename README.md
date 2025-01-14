@@ -48,11 +48,12 @@ python game.py
 ```
 
 It should display the following : 
-![Begin Screenshot](assets/begin.png)
+![image](https://github.com/user-attachments/assets/007147b0-9990-4053-a2e1-0fdbd90fd143)
+
 
 ## Different functionalities
 
-Based on the image above, you can click on the different texts to select the initialization technique. You then need to click on begin the game to display the grid. Once the grid has been displayed, you need to click again on "begin the game" to start the simulation. You can close it every time you want by closing the window : 
+Based on the image above,you have a small description of the game in order to understand how to play. You can click on the different texts to select the initialization technique. You then need to click on begin the game to display the grid. Once the grid has been displayed, you need to click again on "begin the game" to start the simulation. You can close it every time you want by closing the window : 
 - Manually : you will need to click on the grid to put cells alive (white), and click back on it if you wan't this cell to be dead (black). By default, all cells are dead.
 It should display the following : 
 ![Manual initialization](assets/manually.png)
